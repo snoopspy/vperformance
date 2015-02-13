@@ -1,8 +1,7 @@
 #include <iostream>
-#include <unistd.h> // for sleep
 
 static const int LOOP_CNT1 = 1000;
-static const int LOOP_CNT2 = 1000;
+static const int LOOP_CNT2 = 10000;
 
 // ----------------------------------------------------------------------------
 // test_none
@@ -224,6 +223,7 @@ void test_qtime_msec()
 {
   QTime time;
   time.start();
+
   int beg = time.elapsed();
   int end;
   int diff;
@@ -246,6 +246,7 @@ void test_qelapsedtimer_msec()
 {
   QElapsedTimer elapsedTimer;
   elapsedTimer.start();
+
   quint64 beg = elapsedTimer.elapsed();
   quint64 end;
   quint64 diff;
@@ -268,6 +269,7 @@ void test_qelapsedtimer_nsec()
 {
   QElapsedTimer elapsedTimer;
   elapsedTimer.start();
+
   quint64 beg = elapsedTimer.nsecsElapsed();
   quint64 end;
   quint64 diff;
@@ -289,7 +291,7 @@ int main()
 {
   test_none();
 
-  //test_clock_sec();
+  test_clock_sec();
   test_time_sec();
   test_gettimeofday_usec();
 
