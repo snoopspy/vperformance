@@ -14,7 +14,6 @@
 #include <list>
 #include <map>
 #include <stdint.h>
-#include <QElapsedTimer>
 
 // ----------------------------------------------------------------------------
 // VPerformance
@@ -62,7 +61,6 @@ public:
   ReportMap reportMap;
 
 protected:
-  QElapsedTimer elapsedTimer;
   int lastMilestone;
   int64_t lastClock;
 

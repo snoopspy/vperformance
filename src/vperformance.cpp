@@ -1,5 +1,5 @@
+#include <chrono>
 #include "vperformance.h"
-#include <stdio.h> // for printf gilgil temp
 
 // ----------------------------------------------------------------------------
 // VPerformance
@@ -20,7 +20,7 @@ void VPerformance::clear()
   verboseList.clear();
   reportMap.clear();
   lastMilestone = 0;
-  elapsedTimer.start();
+  std::chrono::system_clock lastClock = std::chrono::system_clock::now();
   lastClock = elapsedTimer.elapsed();
 }
 

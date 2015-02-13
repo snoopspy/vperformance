@@ -1,5 +1,10 @@
-#include <QThread>
+#include <unistd.h>
 #include "vperformance.h"
+
+void doSomething(int duration)
+{
+  usleep(duration);
+}
 
 int main()
 {
@@ -8,15 +13,15 @@ int main()
   for (int i = 0; i < 5; i++)
   {
     pfm.check(__LINE__);
-    QThread::msleep(100);
+    doSomething(100);
     pfm.check(__LINE__);
-    QThread::msleep(100);
+    doSomething(100);
     pfm.check(__LINE__);
-    QThread::msleep(100);
+    doSomething(100);
     pfm.check(__LINE__);
-    QThread::msleep(100);
+    doSomething(100);
     pfm.check(__LINE__);
-    QThread::msleep(100);
+    doSomething(100);
   }
   pfm.report();
 }

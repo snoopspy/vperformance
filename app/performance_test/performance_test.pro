@@ -1,15 +1,10 @@
-QT       += core
-QT       -= gui
+QT -= core gui
+
+include (../../lib/vperformance.pri)
 
 TARGET = performance_test
 CONFIG   += console
 CONFIG   -= app_bundle
 TEMPLATE = app
 
-INCLUDEPATH += ../../src
-
-SOURCES += main.cpp \
-    ../../src/vperformance.cpp
-
-HEADERS += \
-    ../../src/vperformance.h
+SOURCES += main.cpp
