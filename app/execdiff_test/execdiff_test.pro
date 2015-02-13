@@ -1,6 +1,6 @@
 QT       += core
 QT       -= gui
-TARGET = timediff_test
+TARGET = execdiff_test
 CONFIG   += console
 CONFIG   -= app_bundle
 TEMPLATE = app
