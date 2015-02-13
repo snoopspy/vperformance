@@ -1,16 +1,5 @@
-#define __USE_MINGW_ANSI_STDIO 1
-#include <VPerformance>
-
-// ----------------------------------------------------------------------------
-// VPerformanceReportKey
-// ----------------------------------------------------------------------------
-bool VPerformanceReportKey::operator < (const VPerformanceReportKey& rhs) const
-{
-  if (this->begMilestone < rhs.begMilestone) return true;
-  if (this->begMilestone > rhs.begMilestone) return false;
-  if (this->endMileseone < rhs.endMileseone) return true;
-  return false;
-}
+#include "vperformance.h"
+#include <stdio.h> // for printf gilgil temp
 
 // ----------------------------------------------------------------------------
 // VPerformance
@@ -18,7 +7,6 @@ bool VPerformanceReportKey::operator < (const VPerformanceReportKey& rhs) const
 VPerformance::VPerformance()
 {
   verbose = false;
-  m_log = VLog::getLog();
   clear();
 }
 
@@ -27,61 +15,63 @@ VPerformance::~VPerformance()
   clear();
 }
 
-void VPerformance::report()
-{
-  if (verbose)
-  {
-    m_log->trace("beg\tend\tduration");
-    foreach (const VPerformanceVerbose& verbose, verboseList)
-    {
-      if (verbose.begMilestone == 0) continue;
-      m_log->trace("%d\t%d\t%llu", verbose.begMilestone, verbose.endMilestone, verbose.duration);
-    }
-  } else
-  {
-    m_log->trace("beg\tend\tcount\tduration");
-    foreach (const VPerformanceReportKey& key, reportMap.keys())
-    {
-      if (key.begMilestone == 0) continue;
-      VPerformanceReportData& data = reportMap[key];
-      m_log->trace("%d\t%d\t%d\t%llu", key.begMilestone, key.endMileseone, data.count, data.totalDuration);
-    }
-  }
-}
-
 void VPerformance::clear()
 {
   verboseList.clear();
-  this->reportMap.clear();
+  reportMap.clear();
   lastMilestone = 0;
-  lastTick      = tick();
+  elapsedTimer.start();
+  lastClock = elapsedTimer.elapsed();
 }
 
 void VPerformance::check(int milestone)
 {
-  check(milestone, tick());
+  check(milestone, elapsedTimer.elapsed());
 }
 
-void VPerformance::check(int milestone, VTick now)
+void VPerformance::check(int milestone, int64_t now)
 {
   if (verbose)
   {
-    VPerformanceVerbose verbose;
-    verbose.begMilestone = lastMilestone;
-    verbose.endMilestone = milestone;
-    verbose.duration     = now - lastTick;
+    Verbose verbose;
+    verbose.from = lastMilestone;
+    verbose.to = milestone;
+    verbose.elapsed = now - lastClock;
     verboseList.push_back(verbose);
   } else
   {
-    VPerformanceReportKey key;
-    key.begMilestone = lastMilestone;
-    key.endMileseone = milestone;
+    ReportKey key;
+    key.from = lastMilestone;
+    key.to = milestone;
 
-    VPerformanceReportData &data = reportMap[key];
+    ReportData &data = reportMap[key];
     data.count++;
-    data.totalDuration += now - lastTick;
+    data.totalElapsed += now - lastClock;
   }
   lastMilestone = milestone;
-  lastTick      = now;
+  lastClock      = now;
 }
 
+#define log printf // gilgil temp
+void VPerformance::report()
+{
+  if (verbose)
+  {
+    log("beg\tend\tduration\n");
+    foreach (const Verbose& verbose, verboseList)
+    {
+      if (verbose.from == 0) continue;
+      log("%d\t%d\t%lld\n", verbose.from, verbose.to, verbose.elapsed);
+    }
+  } else
+  {
+    log("beg\tend\tcount\tduration\n");
+    for (ReportMap::iterator it = reportMap.begin(); it != reportMap.end(); it++)
+    {
+      ReportKey key = it->first;
+      if (key.from == 0) continue;
+      ReportData data = it->second;
+      log("%d\t%d\t%d\t%lld\n", key.from, key.to, data.count, data.totalElapsed);
+    }
+  }
+}
