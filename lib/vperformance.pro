@@ -13,6 +13,3 @@ HEADERS += \
 
 SOURCES += \
   ../src/performance/vperformance.cpp
-
-OTHER_FILES += \
-    vperformance.mk
