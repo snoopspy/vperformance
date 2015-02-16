@@ -1,4 +1,6 @@
 build*/
+Makefile
+*.a
 *.a
 *.lib
 *.user
