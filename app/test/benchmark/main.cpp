@@ -2,9 +2,40 @@
 
 static const int LOOP_CNT = 10000000;
 
-#ifdef __linux__
+#ifdef WIN32
+
+#endif // WIN32
+#include <windows.h>
+void test_gettickcount_msec()
+{
+  DWORD beg = GetTickCount();
+  DWORD end;
+  DWORD diff;
+  for (int i = 0; i < LOOP_CNT; i++)
+  {
+    end = GetTickCount();
+    diff = end - beg;
+  }
+  std::cout << diff << "\t" << __func__ << std::endl;
+}
+
+#include <mmsystem.h>
+void test_timegettime_msec()
+{
+  DWORD beg = timeGetTime();
+  DWORD end;
+  DWORD diff;
+  for (int i = 0; i < LOOP_CNT; i++)
+  {
+    end = timeGetTime();
+    diff = end - beg;
+  }
+  std::cout << diff << "\t" << __func__ << std::endl;
+}
+
+#ifdef __GNUC__
 // ----------------------------------------------------------------------------
-// linux
+// gnuc
 // ----------------------------------------------------------------------------
 #include <time.h>
 void test_clock_usec()
@@ -25,7 +56,7 @@ void test_gettimeofday_usec()
 {
   struct timeval beg; gettimeofday(&beg, NULL);
   struct timeval end;
-  __suseconds_t diff;
+  long diff;
   for (int i = 0; i < LOOP_CNT; i++)
   {
     gettimeofday(&end, NULL);
@@ -47,7 +78,7 @@ void test_time_sec()
   }
   std::cout << diff * 1000 << "\t" << __func__ << std::endl;
 }
-#endif // __linux__
+#endif // __GNUC__
 
 // ----------------------------------------------------------------------------
 // c++11
@@ -148,6 +179,7 @@ void test_high_resolution_clock_nsec()
   std::cout << diff.count() / 1000000 << "\t" << __func__ << std::endl;
 }
 
+#ifdef QT_CORE_LIB
 // ----------------------------------------------------------------------------
 // qt
 // ----------------------------------------------------------------------------
@@ -201,21 +233,29 @@ void test_qelapsedtimer_nsec()
   }
   std::cout << diff /1000000 << "\t" << __func__ << std::endl;
 }
+#endif // QT_CORE_LIB
 
 // ----------------------------------------------------------------------------
 // main
 // ----------------------------------------------------------------------------
 int main()
 {
-#ifdef __linux__
+#ifdef WIN32
   //
-  // linux
+  // windows
+  //
+  test_gettickcount_msec();
+  test_timegettime_msec();
+#endif // WIN32
+
+#ifdef __GNUC__
+  //
+  // gnuc
   //
   test_clock_usec();
   test_time_sec();
   test_gettimeofday_usec();
-#endif // __linux__
-
+#endif
   //
   // c++11
   //
@@ -226,10 +266,12 @@ int main()
   test_high_resolution_clock_usec();
   test_high_resolution_clock_nsec();
 
+#ifdef QT_CORE_LIB
   //
   // qt
   //
   test_qtime_msec();
   test_qelapsedtimer_msec();
   test_qelapsedtimer_nsec();
+#endif // QT_CORE_LIB
 }
