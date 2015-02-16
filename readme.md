@@ -1,2 +1,2 @@
-VDream Performance Measurement library version 9.1
+VDream Performance Measurement Library version 9.1
 ==================================================
