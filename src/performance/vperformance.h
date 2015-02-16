@@ -14,6 +14,7 @@
 #include <chrono>
 #include <list>
 #include <map>
+#include <unordered_map>
 
 // ----------------------------------------------------------------------------
 // VPerformance
@@ -40,6 +41,17 @@ class VPerformance
       if (this->to < rhs.to) return true;
       return false;
     }
+    bool operator == (const ReportKey& rhs) const
+    {
+      return (from == rhs.from) && (to == rhs.to);
+    }
+    struct Hash
+    {
+      size_t operator()(const ReportKey &key) const
+      {
+        return std::hash<int>()(key.from) ^ std::hash<int>()(key.to);
+      }
+    };
   };
 
   struct ReportData
@@ -49,7 +61,8 @@ class VPerformance
     std::chrono::nanoseconds totalElapsed;
   };
 
-  typedef std::map<ReportKey, ReportData> ReportMap;
+  //typedef std::map<ReportKey, ReportData> ReportMap;
+  typedef std::unordered_map<ReportKey, ReportData, ReportKey::Hash> ReportMap;
 
 public:
   VPerformance();
