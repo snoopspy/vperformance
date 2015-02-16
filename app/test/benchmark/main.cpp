@@ -4,7 +4,6 @@ static const int LOOP_CNT = 10000000;
 
 #ifdef WIN32
 
-#endif // WIN32
 #include <windows.h>
 void test_gettickcount_msec()
 {
@@ -32,6 +31,7 @@ void test_timegettime_msec()
   }
   std::cout << diff << "\t" << __func__ << std::endl;
 }
+#endif // WIN32
 
 #ifdef __GNUC__
 // ----------------------------------------------------------------------------
@@ -51,6 +51,20 @@ void test_clock_usec()
   std::cout << diff * 1000 / CLOCKS_PER_SEC << "\t" << __func__ << std::endl;
 }
 
+#include <time.h>
+void test_time_sec()
+{
+  time_t beg; time(&beg);
+  time_t end;
+  time_t diff;
+  for (int i = 0; i < LOOP_CNT; i++)
+  {
+    time(&end);
+    diff = end - beg;
+  }
+  std::cout << diff * 1000 << "\t" << __func__ << std::endl;
+}
+
 #include <sys/time.h>
 void test_gettimeofday_usec()
 {
@@ -66,17 +80,17 @@ void test_gettimeofday_usec()
 }
 
 #include <time.h>
-void test_time_sec()
+void test_clock_gettime_nsec()
 {
-  time_t beg; time(&beg);
-  time_t end;
-  time_t diff;
+  struct timespec beg; clock_gettime(CLOCK_MONOTONIC, &beg);
+  struct timespec end;
+  long diff;
   for (int i = 0; i < LOOP_CNT; i++)
   {
-    time(&end);
-    diff = end - beg;
+    clock_gettime(CLOCK_MONOTONIC, &end);
+    diff = (end.tv_sec - beg.tv_sec) * 1000000000 + (end.tv_nsec - beg.tv_nsec);
   }
-  std::cout << diff * 1000 << "\t" << __func__ << std::endl;
+  std::cout << diff / 1000000 << "\t" << __func__ << std::endl;
 }
 #endif // __GNUC__
 
@@ -255,6 +269,7 @@ int main()
   test_clock_usec();
   test_time_sec();
   test_gettimeofday_usec();
+  test_clock_gettime_nsec();
 #endif
   //
   // c++11
