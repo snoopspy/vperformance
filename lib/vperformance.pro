@@ -9,7 +9,10 @@ CONFIG += staticlib
 DESTDIR = $${PWD}
 
 HEADERS += \
-  ../src/vperformance.h
+  ../src/performance/vperformance.h
 
 SOURCES += \
-  ../src/vperformance.cpp
+  ../src/performance/vperformance.cpp
+
+OTHER_FILES += \
+    vperformance.mk

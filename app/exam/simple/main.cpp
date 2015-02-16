@@ -1,5 +1,5 @@
 #include <unistd.h>
-#include "vperformance.h"
+#include <VPerformance>
 
 void doSomething(int msec)
 {
