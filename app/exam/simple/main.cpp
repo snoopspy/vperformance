@@ -1,27 +1,26 @@
 #include <unistd.h>
 #include "vperformance.h"
 
-void doSomething(int duration)
+void doSomething(int msec)
 {
-  usleep(duration);
+  usleep(msec * 1000);
 }
 
 int main()
 {
   VPerformance pfm;
-
-  for (int i = 0; i < 5; i++)
+  for (int i = 0; i < 10; i++)
   {
     pfm.check(__LINE__);
-    doSomething(100);
+    doSomething(10);
     pfm.check(__LINE__);
-    doSomething(100);
+    doSomething(20);
     pfm.check(__LINE__);
-    doSomething(100);
+    doSomething(30);
     pfm.check(__LINE__);
-    doSomething(100);
+    doSomething(40);
     pfm.check(__LINE__);
-    doSomething(100);
+    doSomething(50);
   }
   pfm.report();
 }

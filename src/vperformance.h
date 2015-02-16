@@ -11,9 +11,9 @@
 #ifndef __V_PERFORMANCE_H__
 #define __V_PERFORMANCE_H__
 
+#include <chrono>
 #include <list>
 #include <map>
-#include <stdint.h>
 
 // ----------------------------------------------------------------------------
 // VPerformance
@@ -24,7 +24,7 @@ class VPerformance
   {
     int from;
     int to;
-    int64_t elapsed;
+    std::chrono::nanoseconds elapsed;
   };
 
   typedef std::list<Verbose> VerboseList;
@@ -46,7 +46,7 @@ class VPerformance
   {
   public:
     int count;
-    int64_t totalElapsed;
+    std::chrono::nanoseconds totalElapsed;
   };
 
   typedef std::map<ReportKey, ReportData> ReportMap;
@@ -62,12 +62,12 @@ public:
 
 protected:
   int lastMilestone;
-  int64_t lastClock;
+  std::chrono::high_resolution_clock::time_point lastClock;
 
 public:
   void clear();
   void check(int milestone);
-  void check(int milestone, int64_t now);
+  void check(int milestone, std::chrono::high_resolution_clock::time_point now);
   void report();
 };
 

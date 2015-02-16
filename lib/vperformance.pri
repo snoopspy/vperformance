@@ -1,4 +1,9 @@
 #-------------------------------------------------
+# c++11
+#-------------------------------------------------
+QMAKE_CXXFLAGS += -std=c++11
+
+#-------------------------------------------------
 # library name
 #-------------------------------------------------
 VPERFORMANCE_LIB_NAME = vperformance
@@ -6,7 +11,7 @@ android-g++ {
   VPERFORMANCE_LIB_NAME = $${VPERFORMANCE_LIB_NAME}_android
 }
 CONFIG(debug, debug|release) {
-  VMEMLEAK_LIB_NAME = $${VMEMLEAK_LIB_NAME}_d
+  VPERFORMANCE_LIB_NAME = $${VPERFORMANCE_LIB_NAME}_d
 }
 
 #-------------------------------------------------

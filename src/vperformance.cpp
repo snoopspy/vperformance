@@ -1,4 +1,3 @@
-#include <chrono>
 #include "vperformance.h"
 
 // ----------------------------------------------------------------------------
@@ -20,16 +19,15 @@ void VPerformance::clear()
   verboseList.clear();
   reportMap.clear();
   lastMilestone = 0;
-  std::chrono::system_clock lastClock = std::chrono::system_clock::now();
-  lastClock = elapsedTimer.elapsed();
+  lastClock = std::chrono::high_resolution_clock::now();
 }
 
 void VPerformance::check(int milestone)
 {
-  check(milestone, elapsedTimer.elapsed());
+  check(milestone, std::chrono::high_resolution_clock::now());
 }
 
-void VPerformance::check(int milestone, int64_t now)
+void VPerformance::check(int milestone, std::chrono::high_resolution_clock::time_point now)
 {
   if (verbose)
   {
@@ -49,29 +47,39 @@ void VPerformance::check(int milestone, int64_t now)
     data.totalElapsed += now - lastClock;
   }
   lastMilestone = milestone;
-  lastClock      = now;
+  lastClock = now;
 }
 
-#define log printf // gilgil temp
+#include <iostream>
 void VPerformance::report()
 {
   if (verbose)
   {
-    log("beg\tend\tduration\n");
-    foreach (const Verbose& verbose, verboseList)
+    std::cout << "beg\tend\telapsed\n";
+    for (VerboseList::iterator it = verboseList.begin(); it != verboseList.end(); it++)
     {
+      Verbose verbose = *it;
       if (verbose.from == 0) continue;
-      log("%d\t%d\t%lld\n", verbose.from, verbose.to, verbose.elapsed);
+      std::cout << verbose.from << "\t"
+        << "\t" << verbose.to
+        << "\t" << verbose.elapsed.count()
+        << std::endl;
     }
   } else
   {
-    log("beg\tend\tcount\tduration\n");
+    std::cout << "beg\tend\tcount\telapsed\taverage\n";
     for (ReportMap::iterator it = reportMap.begin(); it != reportMap.end(); it++)
     {
       ReportKey key = it->first;
       if (key.from == 0) continue;
       ReportData data = it->second;
-      log("%d\t%d\t%d\t%lld\n", key.from, key.to, data.count, data.totalElapsed);
+      std::chrono::nanoseconds avg = data.totalElapsed / data.count;
+      std::cout << key.from
+        << "\t" << key.to
+        << "\t" << data.count
+        << "\t" << data.totalElapsed.count() / 1000000
+        << "\t" << avg.count() / 1000000
+        << std::endl;
     }
   }
 }
