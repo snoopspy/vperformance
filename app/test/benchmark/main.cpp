@@ -144,7 +144,19 @@ void test_system_clock_nsec()
   }
   std::cout << diff.count() / 1000000 << "\t" << __func__ << std::endl;
 }
-
+#include <time.h>
+void test_time_sec()
+{
+  time_t beg; time(&beg);
+  time_t end;
+  time_t diff;
+  for (int i = 0; i < LOOP_CNT; i++)
+  {
+    time(&end);
+    diff = end - beg;
+  }
+  std::cout << diff * 1000 << "\t" << __func__ << std::endl;
+}
 #include <chrono>
 void test_high_resolution_clock_msec()
 {
@@ -271,6 +283,7 @@ int main()
   test_gettimeofday_usec();
   test_clock_gettime_nsec();
 #endif
+
   //
   // c++11
   //
