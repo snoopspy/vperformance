@@ -1,6 +1,6 @@
 QT -= core gui
 
-include (../../../lib/vperformance.pri)
+include (../../../vperformance.pri)
 
 TARGET = simple
 CONFIG   += console

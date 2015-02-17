@@ -17,7 +17,7 @@ CONFIG(debug, debug|release) {
 #-------------------------------------------------
 # vperformance
 #-------------------------------------------------
-VPERFORMANCE_PATH = $${PWD}/..
+VPERFORMANCE_PATH = $${PWD}
 INCLUDEPATH += $${VPERFORMANCE_PATH}/src
 !CONFIG(VPERFORMANCE_LIB_BUILD) {
   PRE_TARGETDEPS += $${VPERFORMANCE_PATH}/lib/lib$${VPERFORMANCE_LIB_NAME}.a

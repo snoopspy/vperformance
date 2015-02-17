@@ -6,10 +6,10 @@ include (vperformance.pri)
 TARGET = $${VPERFORMANCE_LIB_NAME}
 TEMPLATE = lib
 CONFIG += staticlib
-DESTDIR = $${PWD}
+DESTDIR = $${PWD}/lib
 
 HEADERS += \
-  ../src/performance/vperformance.h
+  src/performance/vperformance.h
 
 SOURCES += \
-  ../src/performance/vperformance.cpp
+  src/performance/vperformance.cpp
