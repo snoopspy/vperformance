@@ -21,7 +21,7 @@ release:
 
 app_:
 	cd app && \
-	qmake app.pro CONFIG+=debug && \
+	qmake app.pro CONFIG+=release && \
 	make -f Makefile && \
 	make clean -f Makefile && \
 	cd ..
