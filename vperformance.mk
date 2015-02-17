@@ -1,5 +1,3 @@
-VPERFORMANCE_DIR := $(shell dirname $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST)))))
-
 #
 # c++11
 #
@@ -8,7 +6,8 @@ CPPFLAGS += -std=c++11
 #
 # vperformance
 #
-CPPFLAGS += -I$(VPERFORMANCE_DIR)/src
-LDFLAGS += -L$(VPERFORMANCE_DIR)/lib
+VPERFORMANCE_PATH := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
+CPPFLAGS += -I$(VPERFORMANCE_PATH)/src
+LDFLAGS += -L$(VPERFORMANCE_PATH)/lib
 LDFLAGS += -lvperformance
 
