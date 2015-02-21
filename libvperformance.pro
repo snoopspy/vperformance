@@ -1,4 +1,5 @@
-QT -= core gui
+QT += core
+QT -= gui
 
 CONFIG += VPERFORMANCE_LIB_BUILD
 include (vperformance.pri)
@@ -9,7 +10,7 @@ CONFIG += staticlib
 DESTDIR = $${PWD}/lib
 
 HEADERS += \
-  src/performance/vperformance.h
+  src/performance/vperformance.h \
+  src/performance/vperformanceelapsedtimer.h
 
-SOURCES += \
-  src/performance/vperformance.cpp
+SOURCES +=

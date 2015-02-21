@@ -1,5 +1,6 @@
+#include <iostream>
 #include <unistd.h>
-#include <VPerformance>
+#include <VPerformanceElapsedTimer>
 
 void doSomething(int msec)
 {
@@ -9,7 +10,7 @@ void doSomething(int msec)
 int main()
 {
   //VPerformance pfm;
-  VVerbosePerformance pfm;
+  VPerformanceElapsedTimer pfm;
   for (int i = 0; i < 10; i++)
   {
     pfm.check(__LINE__);
@@ -23,5 +24,5 @@ int main()
     pfm.check(__LINE__);
     doSomething(50);
   }
-  pfm.report();
+  pfm.report(std::cout);
 }

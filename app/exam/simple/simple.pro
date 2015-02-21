@@ -1,4 +1,5 @@
-QT -= core gui
+QT += core
+QT -= gui
 
 include (../../../vperformance.pri)
 
