@@ -1,5 +1,15 @@
-#ifndef VPERFORMANCEELAPSEDTIMER_H
-#define VPERFORMANCEELAPSEDTIMER_H
+// ----------------------------------------------------------------------------
+//
+// VDream Component Suite version 9.1
+//
+// http://www.gilgil.net
+//
+// Copyright (c) Gilbert Lee All rights reserved
+//
+// ----------------------------------------------------------------------------
+
+#ifndef __V_PERFORMANCE_ELAPSEDTIMER_H__
+#define __V_PERFORMANCE_ELAPSEDTIMER_H__
 
 #include <QElapsedTimer>
 #include "vperformance.h"
@@ -8,13 +18,15 @@ class VPerformanceElapsedTimerTimer
 {
 protected:
   QElapsedTimer elapsedTimer;
+
 public:
   VPerformanceElapsedTimerTimer() { clear(); }
+
 public:
   void clear() { elapsedTimer.start(); }
   qint64 now() { return elapsedTimer.nsecsElapsed(); }
 };
 
-class VPerformanceElapsedTimer : public VPerformance<qint64, qint64, qint64, VPerformanceElapsedTimerTimer> {};
+class VPerformanceElapsedTimer : public VPerformance<int, qint64, qint64, VPerformanceElapsedTimerTimer> {};
 
-#endif // VPERFORMANCEELAPSEDTIMER_H
+#endif // __V_PERFORMANCE_ELAPSEDTIMER_H__

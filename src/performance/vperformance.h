@@ -112,7 +112,7 @@ public:
       Key key = it->first;
       if (key.from == 0) continue;
       Data data = it->second;
-      DIFF avg = data.totalElapsed / data.count;
+      int avg = (int)data.totalElapsed / data.count;
       os << key.from
         << "\t" << key.to
         << "\t" << data.count
