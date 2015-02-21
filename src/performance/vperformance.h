@@ -21,15 +21,6 @@
 // ----------------------------------------------------------------------------
 class VPerformance
 {
-  struct Verbose
-  {
-    int from;
-    int to;
-    std::chrono::nanoseconds elapsed;
-  };
-
-  typedef std::list<Verbose> VerboseList;
-
   struct ReportKey
   {
     int from;
@@ -69,13 +60,43 @@ public:
   virtual ~VPerformance();
 
 public:
-  bool verbose;
-  VerboseList verboseList;
   ReportMap reportMap;
 
 protected:
   int lastMilestone;
   std::chrono::high_resolution_clock::time_point lastClock;
+
+public:
+  void clear();
+  void check(int milestone);
+  void check(int milestone, std::chrono::high_resolution_clock::time_point now);
+  void report();
+};
+
+// ----------------------------------------------------------------------------
+// VVerbosePerformance
+// ----------------------------------------------------------------------------
+class VVerbosePerformance
+{
+public:
+  struct Verbose
+  {
+    int from;
+    int to;
+    std::chrono::nanoseconds elapsed;
+  };
+
+  typedef std::list<Verbose> VerboseList;
+
+  VerboseList verboseList;
+
+protected:
+  int lastMilestone;
+  std::chrono::high_resolution_clock::time_point lastClock;
+
+public:
+  VVerbosePerformance();
+  virtual ~VVerbosePerformance();
 
 public:
   void clear();

@@ -8,7 +8,8 @@ void doSomething(int msec)
 
 int main()
 {
-  VPerformance pfm;
+  //VPerformance pfm;
+  VVerbosePerformance pfm;
   for (int i = 0; i < 10; i++)
   {
     pfm.check(__LINE__);
