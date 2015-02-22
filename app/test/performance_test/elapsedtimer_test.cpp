@@ -11,6 +11,11 @@ TEST (ElapsedTimer, loopTest)
   MyTest<VPerformanceElapsedTimer, Loop>();
 }
 
+TEST (ElapsedTimer, nsleepTest)
+{
+  MyTest<VPerformanceElapsedTimer, NSleep>();
+}
+
 TEST (ElapsedTimer, usleepTest)
 {
   MyTest<VPerformanceElapsedTimer, USleep>();

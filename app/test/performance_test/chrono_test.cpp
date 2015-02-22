@@ -11,6 +11,11 @@ TEST (Chrono, loopTest)
   MyTest<VPerformanceChrono, Loop>();
 }
 
+TEST (Chrono, nsleepTest)
+{
+  MyTest<VPerformanceChrono, NSleep>();
+}
+
 TEST (Chrono, usleepTest)
 {
   MyTest<VPerformanceChrono, USleep>();

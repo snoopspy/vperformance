@@ -16,6 +16,11 @@ struct Loop
   void doSomething(int n) { _sum = 0; for (int i = 0; i < n * 1000000; i++) _sum += i; }
 };
 
+struct NSleep
+{
+  void doSomething(int n) { timespec ts; ts.tv_sec = 0; ts.tv_nsec = n; nanosleep(&ts, NULL); }
+};
+
 struct USleep
 {
   void doSomething(int n) { usleep(n); }
