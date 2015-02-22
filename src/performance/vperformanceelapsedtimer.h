@@ -14,19 +14,14 @@
 #include <QElapsedTimer>
 #include "vperformance.h"
 
-class VPerformanceElapsedTimerTimer
+struct VPerformanceElapsedTimerTimer
 {
-protected:
   QElapsedTimer elapsedTimer;
-
-public:
-  VPerformanceElapsedTimerTimer() { clear(); }
-
-public:
-  void clear() { elapsedTimer.start(); }
+  VPerformanceElapsedTimerTimer() { elapsedTimer.start(); }
   qint64 now() { return elapsedTimer.nsecsElapsed(); }
 };
 
-class VPerformanceElapsedTimer : public VPerformance<int, qint64, qint64, VPerformanceElapsedTimerTimer> {};
+class VPerformanceElapsedTimer
+  : public VPerformance<int, qint64, qint64, VPerformanceElapsedTimerTimer> {};
 
 #endif // __V_PERFORMANCE_ELAPSEDTIMER_H__

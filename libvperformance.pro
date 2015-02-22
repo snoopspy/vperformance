@@ -1,10 +1,9 @@
 QT += core
 QT -= gui
 
-CONFIG += VPERFORMANCE_LIB_BUILD
 include (vperformance.pri)
 
-TARGET = $${VPERFORMANCE_LIB_NAME}
+TARGET = vperformance
 TEMPLATE = lib
 CONFIG += staticlib
 DESTDIR = $${PWD}/lib

@@ -12,18 +12,21 @@
 #define __V_PERFORMANCE_H__
 
 #include <map>
-// #include <unordered_map> // gilgil temp 2015.02.22
 #include <ostream>
 
 /*
- * MILESTONE : int
+ * MILESTONE (e.g. int)
+ *   bool operator < (const MILESTONE& rhs) const;
+ *   bool operator > (const MILESTONE& rhs) const;
+ *   bool operator == (const MILESTONE& rhs) const;
  *
- * CLOCK     : std::chrono::high_resolution_clock::time_point
+  * CLOCK (e.g. std::chrono::high_resolution_clock::time_point)
+ *   DIFF operator - (const CLOCK& rhs);
  *
- * ELAPSED   : std::chrono::nanoseconds
+ * DIFF (e.g. std::chrono::nanoseconds)
+ *   operator int() const;
  *
- * TIMER     : show have the following functions
- *   void clear();
+ * TIMER (e.g. std::chrono::high_resolution_clock)
  *   CLOCK now();
  *
  * */
@@ -79,7 +82,6 @@ public:
 
   void clear()
   {
-    timer.clear();
     reportMap.clear();
     lastMilestone = 0;
     lastClock = timer.now();
@@ -106,13 +108,14 @@ public:
 
   virtual void report(std::ostream& os)
   {
+    os.imbue(std::locale(""));
     os << "beg\tend\tcount\telapsed\taverage\n";
     for (auto it = reportMap.begin(); it != reportMap.end(); it++)
     {
       Key key = it->first;
       if (key.from == 0) continue;
       Data data = it->second;
-      int avg = (int)data.totalElapsed / data.count;
+      DIFF avg = data.totalElapsed / data.count;
       os << key.from
         << "\t" << key.to
         << "\t" << data.count

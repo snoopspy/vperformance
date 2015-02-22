@@ -15,22 +15,14 @@
 #include <ostream>
 #include "vperformance.h"
 
-class VPerformanceChronoDiff : std::chrono::nanoseconds
-{
-public:
-  operator int() const
-  {
-    return (int)this->count();
-  }
-};
+class VPerformanceChrono
+  : public VPerformance<int, std::chrono::high_resolution_clock::time_point, std::chrono::nanoseconds, std::chrono::high_resolution_clock> {};
 
-class VPerformanceChronoTimer
+std::ostream& operator << (std::ostream& os, std::chrono::nanoseconds& rhs)
 {
-public:
-  void clear() {}
-  std::chrono::high_resolution_clock::time_point now() { return std::chrono::high_resolution_clock::now(); }
-};
+  os << rhs.count();
+  return os;
+}
 
-class VPerformanceChrono: public VPerformance<int, std::chrono::high_resolution_clock::time_point, VPerformanceChronoDiff, VPerformanceChronoTimer> {};
 #endif // __V_PERFORMANCE_CHRONO_H__
 
