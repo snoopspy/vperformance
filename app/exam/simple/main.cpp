@@ -20,8 +20,6 @@ int main()
     doSomething(30);
     pf.check(__LINE__);
     doSomething(40);
-    pf.check(__LINE__);
-    doSomething(50);
   }
   pf.report(std::cout);
 }
