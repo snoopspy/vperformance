@@ -5,8 +5,6 @@
 #include <iostream>
 #include <time.h>
 
-static const int MY_TEST_LOOP_CNT = 1000;
-
 struct None
 {
   void doSomething(int n) { (void)n; }
@@ -33,7 +31,7 @@ struct Sleep
   void doSomething(int n) { sleep(n); }
 };
 
-template <class PERFORMANCE, int LOOP_CNT, class FOO>
+template <class PERFORMANCE, class FOO, int LOOP_CNT = 1000>
 struct MyTest
 {
   MyTest()

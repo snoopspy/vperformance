@@ -3,25 +3,25 @@
 
 TEST (Chrono, loopTest)
 {
-  MyTest<VPerformanceChrono, MY_TEST_LOOP_CNT, Loop>();
+  MyTest<VPerformanceChrono, Loop>();
 }
 
 TEST (Chrono, noneTest)
 {
-  MyTest<VPerformanceChrono, MY_TEST_LOOP_CNT, None>();
+  MyTest<VPerformanceChrono, None>();
 }
 
 TEST (Chrono, usleepTest)
 {
-  MyTest<VPerformanceChrono, MY_TEST_LOOP_CNT, USleep>();
+  MyTest<VPerformanceChrono, USleep>();
 }
 
 TEST (Chrono, msleepTest)
 {
-  MyTest<VPerformanceChrono, MY_TEST_LOOP_CNT, MSleep>();
+  MyTest<VPerformanceChrono, MSleep>();
 }
 
 TEST (Chrono, sleepTest)
 {
-  MyTest<VPerformanceChrono, 1, Sleep>();
+  MyTest<VPerformanceChrono, Sleep, 1>();
 }

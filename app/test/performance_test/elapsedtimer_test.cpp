@@ -3,25 +3,25 @@
 
 TEST (ElapsedTimer, loopTest)
 {
-  MyTest<VPerformanceElapsedTimer, MY_TEST_LOOP_CNT, Loop>();
+  MyTest<VPerformanceElapsedTimer, Loop>();
 }
 
 TEST (ElapsedTimer, noneTest)
 {
-  MyTest<VPerformanceElapsedTimer, MY_TEST_LOOP_CNT, None>();
+  MyTest<VPerformanceElapsedTimer, None>();
 }
 
 TEST (ElapsedTimer, usleepTest)
 {
-  MyTest<VPerformanceElapsedTimer, MY_TEST_LOOP_CNT, USleep>();
+  MyTest<VPerformanceElapsedTimer, USleep>();
 }
 
 TEST (ElapsedTimer, msleepTest)
 {
-  MyTest<VPerformanceElapsedTimer, MY_TEST_LOOP_CNT, MSleep>();
+  MyTest<VPerformanceElapsedTimer, MSleep>();
 }
 
 TEST (ElapsedTimer, sleepTest)
 {
-  MyTest<VPerformanceElapsedTimer, 1, Sleep>();
+  MyTest<VPerformanceElapsedTimer, Sleep, 1>();
 }
