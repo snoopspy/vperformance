@@ -1,14 +1,14 @@
 #include <VPerformanceChrono>
 #include "mytest.h"
 
-TEST (Chrono, loopTest)
-{
-  MyTest<VPerformanceChrono, Loop>();
-}
-
 TEST (Chrono, noneTest)
 {
   MyTest<VPerformanceChrono, None>();
+}
+
+TEST (Chrono, loopTest)
+{
+  MyTest<VPerformanceChrono, Loop>();
 }
 
 TEST (Chrono, usleepTest)

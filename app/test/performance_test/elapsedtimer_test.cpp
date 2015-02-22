@@ -1,14 +1,14 @@
 #include <VPerformanceElapsedTimer>
 #include "mytest.h"
 
-TEST (ElapsedTimer, loopTest)
-{
-  MyTest<VPerformanceElapsedTimer, Loop>();
-}
-
 TEST (ElapsedTimer, noneTest)
 {
   MyTest<VPerformanceElapsedTimer, None>();
+}
+
+TEST (ElapsedTimer, loopTest)
+{
+  MyTest<VPerformanceElapsedTimer, Loop>();
 }
 
 TEST (ElapsedTimer, usleepTest)
