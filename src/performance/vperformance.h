@@ -13,23 +13,19 @@
 
 #include <map>
 #include <ostream>
+#include <assert.h>
 
+// ----------------------------------------------------------------------------
+// VPerformance
+// ----------------------------------------------------------------------------
 /*
  * MILESTONE (e.g. int)
- *   bool operator < (const MILESTONE& rhs) const;
- *   bool operator > (const MILESTONE& rhs) const;
- *   bool operator == (const MILESTONE& rhs) const;
+ * CLOCK     (e.g. std::chrono::high_resolution_clock::time_point)
+ * DIFF      (e.g. std::chrono::nanoseconds)
+ * TIMER     (e.g. std::chrono::high_resolution_clock)
  *
-  * CLOCK (e.g. std::chrono::high_resolution_clock::time_point)
- *   DIFF operator - (const CLOCK& rhs);
- *
- * DIFF (e.g. std::chrono::nanoseconds)
- *   operator int() const;
- *
- * TIMER (e.g. std::chrono::high_resolution_clock)
- *   CLOCK now();
- *
- * */
+ * For more information, see VPerformanceNull
+ */
 template <typename MILESTONE, typename CLOCK, typename DIFF, class TIMER>
 class VPerformance
 {
@@ -115,6 +111,7 @@ public:
       Key key = it->first;
       if (key.from == 0) continue;
       Data data = it->second;
+    assert(data.count != 0);
       DIFF avg = data.totalElapsed / data.count;
       os << key.from
         << "\t" << key.to

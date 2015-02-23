@@ -14,6 +14,9 @@
 #include <QElapsedTimer>
 #include "vperformance.h"
 
+// ----------------------------------------------------------------------------
+// VPerformanceElapsedTimerTimer
+// ----------------------------------------------------------------------------
 struct VPerformanceElapsedTimerTimer
 {
   QElapsedTimer elapsedTimer;

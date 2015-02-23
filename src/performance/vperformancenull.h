@@ -13,11 +13,13 @@
 
 #include "vperformance.h"
 
-namespace vpn
+namespace Null
 {
+  typedef int64_t MyInt;
+
   struct Milestone
   {
-    int _m;
+    MyInt _m;
 
     Milestone()                                   { _m = 0;              }
     Milestone(const int rhs)                      { _m = rhs;            }
@@ -28,14 +30,14 @@ namespace vpn
 
   struct Clock
   {
-    int _c;
+    MyInt _c;
 
-    Clock operator - (const Clock &rhs) const { Clock res; res._c = _c / rhs._c; return res; }
+    Clock operator - (const Clock &rhs) const { Clock res; res._c = _c - rhs._c; return res; }
   };
 
   struct Diff
   {
-    int _d;
+    MyInt _d;
 
     Diff operator += (const Clock &rhs)   { _d += rhs._c; return *this;              }
     Diff operator / (const int rhs) const { Diff res; res._d = _d / rhs; return res; }
@@ -43,25 +45,28 @@ namespace vpn
 
   struct Timer
   {
-    int _t;
+    MyInt _t;
 
     Clock now() { Clock res; res._c = _t++; return res; }
   };
 };
 
-std::ostream& operator << (std::ostream& os, vpn::Milestone& rhs)
+std::ostream& operator << (std::ostream& os, Null::Milestone& rhs)
 {
   os << rhs._m;
   return os;
 }
 
-std::ostream& operator << (std::ostream& os, vpn::Diff& rhs)
+std::ostream& operator << (std::ostream& os, Null::Diff& rhs)
 {
   os << rhs._d;
   return os;
 }
 
+// ----------------------------------------------------------------------------
+// VPerformanceNull
+// ----------------------------------------------------------------------------
 class VPerformanceNull
-  : public VPerformance<vpn::Milestone, vpn::Clock, vpn::Diff, vpn::Timer> {};
+  : public VPerformance<Null::Milestone, Null::Clock, Null::Diff, Null::Timer> {};
 
 #endif // __V_PERFORMANCE_NULL_H__

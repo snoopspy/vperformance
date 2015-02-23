@@ -15,6 +15,9 @@
 #include <ostream>
 #include "vperformance.h"
 
+// ----------------------------------------------------------------------------
+// VPerformanceChrono
+// ----------------------------------------------------------------------------
 class VPerformanceChrono
   : public VPerformance<int, std::chrono::high_resolution_clock::time_point, std::chrono::nanoseconds, std::chrono::high_resolution_clock> {};
 
