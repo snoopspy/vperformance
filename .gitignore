@@ -1,6 +1,9 @@
+bin
 build*/
-Makefile
+lib/
+_makefile
+Makefile*
 *.a
 *.o
-*.lib
 *.user
+

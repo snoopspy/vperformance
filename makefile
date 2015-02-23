@@ -1,3 +1,5 @@
+TEMP_MAKEFILE=_makefile
+
 all:
 	make build
 
@@ -10,22 +12,23 @@ build:
 	make app_
 
 debug:
-	qmake libvperformance.pro CONFIG+=debug
-	make -f Makefile
-	make clean -f Makefile
+	qmake libvperformance.pro CONFIG+=debug -o $(TEMP_MAKEFILE)
+	make -f $(TEMP_MAKEFILE)
+	make clean -f $(TEMP_MAKEFILE)
 
 release:
-	qmake libvperformance.pro CONFIG+=release
-	make -f Makefile
-	make clean -f Makefile
+	qmake libvperformance.pro CONFIG+=release -o $(TEMP_MAKEFILE)
+	make -f $(TEMP_MAKEFILE)
+	make clean -f $(TEMP_MAKEFILE)
 
 app_:
 	cd app && \
-	qmake app.pro CONFIG+=release && \
-	make -f Makefile && \
-	make clean -f Makefile && \
+	qmake vperformance_app.pro CONFIG+=release -o $(TEMP_MAKEFILE) && \
+	make -f $(TEMP_MAKEFILE) && \
+	make clean -f $(TEMP_MAKEFILE) && \
 	cd ..
 
 clean:
-	make clean -f Makefile
-	find -name Makefile -type f -delete
+	make clean -f $(TEMP_MAKEFILE)
+	find -name "Makefile*" -type f -delete
+
