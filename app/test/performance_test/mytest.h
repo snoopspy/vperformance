@@ -3,56 +3,35 @@
 
 #include <gtest/gtest.h>
 #include <iostream>
-#include <time.h>
 
-struct None
-{
-  void doSomething(int n) { (void)n; }
-};
-
-extern int _sum;
-struct Loop
-{
-  void doSomething(int n) { _sum = 0; for (int i = 0; i < n * 1000000; i++) _sum += i; }
-};
-
-struct NSleep
-{
-  void doSomething(int n) { timespec ts; ts.tv_sec = 0; ts.tv_nsec = n; nanosleep(&ts, NULL); }
-};
-
-struct USleep
-{
-  void doSomething(int n) { usleep(n); }
-};
-
-struct MSleep
-{
-  void doSomething(int n) { usleep(n * 1000); }
-};
-
-struct Sleep
-{
-  void doSomething(int n) { sleep(n); }
-};
-
-template <class PERFORMANCE, class FOO, int LOOP_CNT = 1000>
+template <class PERFORMANCE, int LOOP_CNT = 1000000>
 struct MyTest
 {
   MyTest()
   {
     PERFORMANCE pf;
-    FOO foo;
     for (int i = 0; i < LOOP_CNT; i++)
     {
       pf.check(1);
-      foo.doSomething(1);
       pf.check(2);
-      foo.doSomething(2);
       pf.check(3);
-      foo.doSomething(3);
       pf.check(4);
-      foo.doSomething(4);
+      pf.check(5);
+      pf.check(6);
+      pf.check(7);
+      pf.check(8);
+      pf.check(9);
+      pf.check(10);
+      pf.check(11);
+      pf.check(12);
+      pf.check(13);
+      pf.check(14);
+      pf.check(15);
+      pf.check(16);
+      pf.check(17);
+      pf.check(18);
+      pf.check(19);
+      pf.check(20);
     }
     pf.report(std::cout);
   }

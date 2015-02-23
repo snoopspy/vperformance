@@ -12,8 +12,7 @@ DESTDIR = $${PWD}/../../../bin
 
 SOURCES += \
     chrono_test.cpp \
-    elapsedtimer_test.cpp \
-    mytest.cpp
+    elapsedtimer_test.cpp
 
 HEADERS += \
     mytest.h
