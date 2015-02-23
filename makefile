@@ -32,3 +32,9 @@ clean:
 	make clean -f $(TEMP_MAKEFILE)
 	find -name "Makefile*" -type f -delete
 
+distclean:
+	make clean
+	rm -rf bin
+	rm -rf lib
+	find -name $(TEMP_MAKEFILE) -type f -delete
+
