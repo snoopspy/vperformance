@@ -11,9 +11,6 @@ DESTDIR = $${PWD}/lib
 HEADERS += \
   src/performance/vperformance.h \
   src/performance/vperformanceelapsedtimer.h \
-  src/performance/vperformancechrono.h \
-  src/VPerformance \
-  src/VPerformanceChrono \
-  src/VPerformanceElapsedTimer
+  src/performance/vperformancechrono.h
 
 SOURCES +=
