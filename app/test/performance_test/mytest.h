@@ -32,6 +32,18 @@ struct MyTest
       pf.check(18);
       pf.check(19);
       pf.check(20);
+      pf.check(21);
+      pf.check(22);
+      pf.check(23);
+      pf.check(24);
+      pf.check(25);
+      pf.check(26);
+      pf.check(27);
+      pf.check(28);
+      pf.check(29);
+      pf.check(30);
+      pf.check(31);
+      pf.check(32);
     }
     pf.report(std::cout);
   }
