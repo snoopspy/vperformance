@@ -1,4 +1,5 @@
 TEMP_MAKEFILE=_makefile
+INSTALL_PATH=/usr/local/include
 
 all:
 	make build
@@ -27,6 +28,13 @@ app_:
 	make -f $(TEMP_MAKEFILE) && \
 	make clean -f $(TEMP_MAKEFILE) && \
 	cd ..
+
+install:
+	cp -R src/* $(INSTALL_PATH)
+
+uninstall:
+	rm -rf $(INSTALL_PATH)/VPerformance*
+	rm -rf $(INSTALL_PATH)/performance
 
 clean:
 	make clean -f $(TEMP_MAKEFILE)
