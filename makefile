@@ -1,28 +1,14 @@
-INSTALL_PATH=/usr/local/include
-
 all:
-	make build
+	make app_
 
 update:
 	git pull
 
-build:
-	make app_
-
 app_:
-	cd app && \
-	qmake && \
-	make && \
-	make clean && \
-	cd ..
-
-install:
-	cp -R src/* $(INSTALL_PATH)
-
-uninstall:
-	rm -rf $(INSTALL_PATH)/VPerformance*
-	rm -rf $(INSTALL_PATH)/performance
+	cd app && qmake && make && make clean && cd ..
 
 clean:
-	find -name "Makefile*" -type f -delete
-
+	find -type d -name 'build-*'    -exec rm -r {} \;
+	find -type f -name '*.o'        -delete
+	find -type f -name '*.pro.user' -delete
+	find -type f -name 'Makefile*'  -delete

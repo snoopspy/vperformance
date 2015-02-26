@@ -11,9 +11,9 @@ TEMPLATE = app
 DESTDIR = $${PWD}/../../../bin
 
 SOURCES += \
-    chrono_test.cpp \
-    elapsedtimer_test.cpp \
-    null_test.cpp
+	chrono_test.cpp \
+	elapsedtimer_test.cpp \
+	null_test.cpp
 
 HEADERS += \
-    mytest.h
+	mytest.h

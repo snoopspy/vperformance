@@ -8,4 +8,3 @@ CPPFLAGS += -std=c++11
 #
 VPERFORMANCE_PATH := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 CPPFLAGS += -I$(VPERFORMANCE_PATH)/src
-
