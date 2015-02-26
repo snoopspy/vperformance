@@ -19,9 +19,14 @@
 // VPerformanceChrono
 // ----------------------------------------------------------------------------
 class VPerformanceChrono
-  : public VPerformance<int, std::chrono::high_resolution_clock::time_point, std::chrono::nanoseconds, std::chrono::high_resolution_clock> {};
+  : public VPerformance<
+      int, // MILESTONE
+      std::chrono::high_resolution_clock::time_point, // CLOCK
+      std::chrono::high_resolution_clock::duration, // DIFF
+      std::chrono::high_resolution_clock // TIMER
+    > {};
 
-std::ostream& operator << (std::ostream& os, std::chrono::nanoseconds& rhs)
+std::ostream& operator << (std::ostream& os, std::chrono::high_resolution_clock::duration& rhs)
 {
   os << rhs.count();
   return os;

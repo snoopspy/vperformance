@@ -25,6 +25,11 @@ struct VPerformanceElapsedTimerTimer
 };
 
 class VPerformanceElapsedTimer
-  : public VPerformance<int, qint64, qint64, VPerformanceElapsedTimerTimer> {};
+  : public VPerformance<
+      int, // MILESTONE
+      qint64, // CLOCK
+      qint64, // DIFF
+      VPerformanceElapsedTimerTimer // TIMER
+    > {};
 
 #endif // __V_PERFORMANCE_ELAPSEDTIMER_H__
