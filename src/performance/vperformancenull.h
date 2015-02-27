@@ -15,19 +15,9 @@
 
 namespace Null
 {
-  typedef int64_t MyInt;
+  typedef int MyInt;
 
-  struct Milestone
-  {
-    MyInt _m;
-
-    Milestone()                                   { _m = 0;              }
-    Milestone(const int rhs)                      { _m = rhs;            }
-    bool operator <  (const Milestone& rhs) const { return _m < rhs._m;  }
-    bool operator >  (const Milestone& rhs) const { return _m > rhs._m;  }
-    bool operator == (const Milestone& rhs) const { return _m == rhs._m; }
-    bool operator != (const Milestone& rhs) const { return _m != rhs._m; }
-  };
+  typedef MyInt Milestone;
 
   struct Clock
   {
@@ -51,12 +41,6 @@ namespace Null
     Clock now() { Clock res; res._c = _t++; return res; }
   };
 };
-
-std::ostream& operator << (std::ostream& os, Null::Milestone& rhs)
-{
-  os << rhs._m;
-  return os;
-}
 
 std::ostream& operator << (std::ostream& os, Null::Diff& rhs)
 {
