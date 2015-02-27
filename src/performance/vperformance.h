@@ -12,7 +12,7 @@
 #define __V_PERFORMANCE_H__
 
 #include <map>
-#include <ostream>
+#include <iostream>
 #include <assert.h>
 
 // ----------------------------------------------------------------------------
@@ -73,8 +73,18 @@ public:
   CLOCK lastClock;
 
 public:
-  VPerformance()          { clear(); }
-  virtual ~VPerformance() { clear(); }
+  VPerformance(MILESTONE startMilestone = 0)
+  {
+    clear();
+    if (startMilestone != 0)
+      check(startMilestone);
+  }
+
+  virtual ~VPerformance()
+  {
+    if (reportMap.size() > 0)
+      report(true);
+  }
 
   void clear()
   {
@@ -102,10 +112,14 @@ public:
     lastClock = now;
   }
 
-  virtual void report(std::ostream& os)
+  virtual void report(bool autoClear = true, std::ostream* os = NULL)
   {
-    os.imbue(std::locale(""));
-    os << "beg\tend\tcount\telapsed\taverage\n";
+    if (os == NULL)
+    {
+      os = &std::cout;
+    }
+    os->imbue(std::locale(""));
+    *os << "beg\tend\tcount\telapsed\taverage\n";
     for (auto it = reportMap.begin(); it != reportMap.end(); it++)
     {
       Key key = it->first;
@@ -113,13 +127,14 @@ public:
       Data data = it->second;
     assert(data.count != 0);
       DIFF avg = data.totalElapsed / data.count;
-      os << key.from
+      *os << key.from
         << "\t" << key.to
         << "\t" << data.count
         << "\t" << data.totalElapsed
         << "\t" << avg
         << std::endl;
     }
+    if (autoClear) clear();
   }
 };
 

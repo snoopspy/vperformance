@@ -26,6 +26,7 @@ namespace Null
     bool operator <  (const Milestone& rhs) const { return _m < rhs._m;  }
     bool operator >  (const Milestone& rhs) const { return _m > rhs._m;  }
     bool operator == (const Milestone& rhs) const { return _m == rhs._m; }
+    bool operator != (const Milestone& rhs) const { return _m != rhs._m; }
   };
 
   struct Clock

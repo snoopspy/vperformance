@@ -1,4 +1,3 @@
-#include <iostream>
 #include <unistd.h>
 #include <VPerformanceChrono>
 
@@ -21,5 +20,5 @@ int main()
     pf.check(__LINE__);
     doSomething(40);
   }
-  pf.report(std::cout);
+  pf.report();
 }

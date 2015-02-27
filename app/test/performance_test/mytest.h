@@ -4,7 +4,7 @@
 #include <gtest/gtest.h>
 #include <iostream>
 
-template <class PERFORMANCE, int LOOP_CNT = 1000000>
+template <class PERFORMANCE, int LOOP_CNT = 100000>
 struct MyTest
 {
   MyTest()

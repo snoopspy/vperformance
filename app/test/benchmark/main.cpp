@@ -1,6 +1,6 @@
 #include <iostream>
 
-static const int LOOP_CNT = 10000000;
+static const int LOOP_CNT = 1000000;
 
 #ifdef WIN32
 
