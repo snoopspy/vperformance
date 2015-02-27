@@ -114,10 +114,7 @@ public:
 
   virtual void report(bool autoClear = true, std::ostream* os = NULL)
   {
-    if (os == NULL)
-    {
-      os = &std::cout;
-    }
+    if (os == NULL) os = &std::cout;
     os->imbue(std::locale(""));
     *os << "beg\tend\tcount\telapsed\taverage\n";
     for (auto it = reportMap.begin(); it != reportMap.end(); it++)
@@ -125,7 +122,7 @@ public:
       Key key = it->first;
       if (key.from == 0) continue;
       Data data = it->second;
-    assert(data.count != 0);
+      assert(data.count != 0);
       DIFF avg = data.totalElapsed / data.count;
       *os << key.from
         << "\t" << key.to
