@@ -21,7 +21,7 @@
 /*
  * MILESTONE (e.g. int)
  * CLOCK     (e.g. std::chrono::high_resolution_clock::time_point)
- * DIFF      (e.g. std::chrono::nanoseconds)
+ * DIFF      (e.g. std::chrono::high_resolution_clock::duration)
  * TIMER     (e.g. std::chrono::high_resolution_clock)
  *
  * For more information, see VPerformanceNull
