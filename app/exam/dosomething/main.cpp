@@ -1,9 +1,10 @@
-#include <unistd.h>
+#include <chrono>
+#include <thread>
 #include <VPerformanceChrono>
 
 void doSomething(int msec)
 {
-  usleep(msec * 1000);
+  std::this_thread::sleep_for(std::chrono::milliseconds(msec));
 }
 
 int main()
