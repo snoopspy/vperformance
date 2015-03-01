@@ -18,13 +18,12 @@
 // ----------------------------------------------------------------------------
 // VPerformanceChrono
 // ----------------------------------------------------------------------------
-typedef
-  VPerformance<
-    int, // MILESTONE
-    std::chrono::high_resolution_clock::time_point, // CLOCK
-    std::chrono::high_resolution_clock::duration, // DIFF
-    std::chrono::high_resolution_clock // TIMER
-   > VPerformanceChrono;
+typedef VPerformance<
+  int, // MILESTONE
+  std::chrono::high_resolution_clock::time_point, // CLOCK
+  std::chrono::high_resolution_clock::duration, // DIFF
+  std::chrono::high_resolution_clock // TIMER
+> VPerformanceChrono;
 
 std::ostream& operator << (std::ostream& os, std::chrono::high_resolution_clock::duration& rhs)
 {
@@ -33,4 +32,3 @@ std::ostream& operator << (std::ostream& os, std::chrono::high_resolution_clock:
 }
 
 #endif // __V_PERFORMANCE_CHRONO_H__
-

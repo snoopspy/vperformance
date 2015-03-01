@@ -51,7 +51,11 @@ std::ostream& operator << (std::ostream& os, Null::Diff& rhs)
 // ----------------------------------------------------------------------------
 // VPerformanceNull
 // ----------------------------------------------------------------------------
-class VPerformanceNull
-  : public VPerformance<Null::Milestone, Null::Clock, Null::Diff, Null::Timer> {};
+typedef VPerformance<
+  Null::Milestone, // MILESTONE
+  Null::Clock, // CLOCK
+  Null::Diff, // DIFF
+  Null::Timer // TIMER
+> VPerformanceNull;
 
 #endif // __V_PERFORMANCE_NULL_H__

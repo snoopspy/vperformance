@@ -4,8 +4,8 @@
 
 int main()
 {
-  VPerformanceChrono pf(__LINE__);
+  VPerformanceChrono pfm(__LINE__);
   std::this_thread::sleep_for(std::chrono::seconds(1));
-  pf.check(__LINE__);
+  pfm.check(__LINE__);
 }
 

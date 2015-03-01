@@ -24,12 +24,11 @@ struct VPerformanceElapsedTimerTimer
   qint64 now() { return elapsedTimer.nsecsElapsed(); }
 };
 
-typedef
-  VPerformance<
-    int, // MILESTONE
-    qint64, // CLOCK
-    qint64, // DIFF
-    VPerformanceElapsedTimerTimer // TIMER
-  > VPerformanceElapsedTimer;
+typedef VPerformance<
+  int, // MILESTONE
+  qint64, // CLOCK
+  qint64, // DIFF
+  VPerformanceElapsedTimerTimer // TIMER
+> VPerformanceElapsedTimer;
 
 #endif // __V_PERFORMANCE_ELAPSEDTIMER_H__

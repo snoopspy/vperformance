@@ -9,43 +9,43 @@ struct MyTest
 {
   MyTest()
   {
-    PERFORMANCE pf;
+    PERFORMANCE pfm;
     for (int i = 0; i < LOOP_CNT; i++)
     {
-      pf.check(1);
-      pf.check(2);
-      pf.check(3);
-      pf.check(4);
-      pf.check(5);
-      pf.check(6);
-      pf.check(7);
-      pf.check(8);
-      pf.check(9);
-      pf.check(10);
-      pf.check(11);
-      pf.check(12);
-      pf.check(13);
-      pf.check(14);
-      pf.check(15);
-      pf.check(16);
-      pf.check(17);
-      pf.check(18);
-      pf.check(19);
-      pf.check(20);
-      pf.check(21);
-      pf.check(22);
-      pf.check(23);
-      pf.check(24);
-      pf.check(25);
-      pf.check(26);
-      pf.check(27);
-      pf.check(28);
-      pf.check(29);
-      pf.check(30);
-      pf.check(31);
-      pf.check(32);
+      pfm.check(1);
+      pfm.check(2);
+      pfm.check(3);
+      pfm.check(4);
+      pfm.check(5);
+      pfm.check(6);
+      pfm.check(7);
+      pfm.check(8);
+      pfm.check(9);
+      pfm.check(10);
+      pfm.check(11);
+      pfm.check(12);
+      pfm.check(13);
+      pfm.check(14);
+      pfm.check(15);
+      pfm.check(16);
+      pfm.check(17);
+      pfm.check(18);
+      pfm.check(19);
+      pfm.check(20);
+      pfm.check(21);
+      pfm.check(22);
+      pfm.check(23);
+      pfm.check(24);
+      pfm.check(25);
+      pfm.check(26);
+      pfm.check(27);
+      pfm.check(28);
+      pfm.check(29);
+      pfm.check(30);
+      pfm.check(31);
+      pfm.check(32);
     }
-    pf.report(std::cout);
+    pfm.report(std::cout);
   }
 };
 

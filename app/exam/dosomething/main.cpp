@@ -9,17 +9,17 @@ void doSomething(int msec)
 
 int main()
 {
-  VPerformanceChrono pf;
+  VPerformanceChrono pfm;
   for (int i = 0; i < 10; i++)
   {
-    pf.check(__LINE__);
+    pfm.check(1111); /**/
     doSomething(10);
-    pf.check(__LINE__);
+    pfm.check(2222); /**/
     doSomething(20);
-    pf.check(__LINE__);
+    pfm.check(3333); /**/
     doSomething(30);
-    pf.check(__LINE__);
+    pfm.check(4444); /**/
     doSomething(40);
   }
-  pf.report();
+  pfm.report();
 }
