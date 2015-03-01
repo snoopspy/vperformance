@@ -14,16 +14,13 @@ VDream Performance Measurement Library
 
 # Examples
   * There exists the following code.
-  * Suppoose that it contains a critical routine that consume too much time. You don't know which function is time comsuming, and you would like to figure out how long it takes time in in each routine. VPerformance is a good solution for this problem.
+  * Suppoose that it contains a critical routine that consumes too much time. You don't know which function is time comsuming, and you would like to figure out how long it takes time in in each routine. VPerformance is a good solution for this problem.
 ```
   doSometing1();
   doSometing2();
   doSometing3();
   doSometing4();
 ```
-
-
-
   * Original code(doSomething is milli-second sleep function in fact).
 ```
 int main()
