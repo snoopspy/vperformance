@@ -6,12 +6,13 @@ VDream Performance Measurement Library
 
 # Install
 * VPerformance consists of only header file that means it requires no cpp files.
-    * For Qt user(based on QElapsedTimer)
+    * For Qt user(based on **QElapsedTimer**)
       * Include **vperformance.pri**
-    * For None Qt user(based on chrono)
+    * For None Qt user(based on **chrono**)
       * Just include and use header files in src folder.
 
 # Examples
+* See the following code. Suppose that it contains a critical routine that consumes too much time. You don't know which function is time comsuming, Anyway, you would like to figure out how long it takes time in in each routine. VPerformance is a good solution for this problem.
 
 ```cpp
   doSometing1();
@@ -19,8 +20,6 @@ VDream Performance Measurement Library
   doSometing3();
   doSometing4();
 ```
-
-* Suppose that it contains a critical routine that consumes too much time. You don't know which function is time comsuming, Anyway, you would like to figure out how long it takes time in in each routine. VPerformance is a good solution for this problem.
 
 * Original code.
 
