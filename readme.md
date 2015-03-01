@@ -2,7 +2,7 @@ VDream Performance Measurement Library
 ======================================
 
 # About
-* VPerformance library is a simple and robust template based time difference measurement library for C++.
+* VPerformance is a simple and robust template based time difference measurement library for C++.
 
 # Install
 * VPerformance consists of only header file that means it requires no cpp files.
