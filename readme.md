@@ -3,7 +3,7 @@ VDream Performance Measurement Library
 
 # About
   * VPerformance is a template based time measurement library for C++.
-  * It used c++11 chrono module and QElapsedTimer class of Qt.
+  * It used c++11 chrono module or QElapsedTimer class of Qt.
 
 # Install
   * VPerformance consists of only header file that means it requires no compilation.
@@ -14,15 +14,20 @@ VDream Performance Measurement Library
 
 # Examples
   * There exists the following code.
-  * Suppoose that it contains a critical routine that consumes too much time. You don't know which function is time comsuming, and you would like to figure out how long it takes time in in each routine. VPerformance is a good solution for this problem.
+  * Suppose that it contains a critical routine that consumes too much time. You don't know which function is time comsuming, and you would like to figure out how long it takes time in in each routine. VPerformance is a good solution for this problem.
 ```
   doSometing1();
   doSometing2();
   doSometing3();
   doSometing4();
 ```
-  * Original code(doSomething is milli-second sleep function in fact).
+  * Original code.
 ```
+void doSomething(int msec)
+{
+  std::this_thread::sleep_for(std::chrono::milliseconds(msec));
+}
+
 int main()
 {
   for (int i = 0; i < 10; i++)
@@ -49,7 +54,7 @@ int main()
   }
 }
 ```
-  * Call **check** function everywhere you would like to check time consuming job. You could use ```__LINE__``` macro for parameter.
+  * Call **check** function everywhere you would like to check time consuming job. You could use ```__LINE__``` macro for the parameter.
   * At the end, call **report** function to write the result.
 ```
 int main()
@@ -66,16 +71,16 @@ int main()
     pfm.check(4444); /**/
     doSomething(40);
   }
-  pfm.report();
+  pfm.report(); /**/
 }
 ```
   * The result. You get count, elapsed time and average time information everywhere check function is called.
 ```
 beg     end     count   elapsed         average
-1,111   2,222   10      122,851,496     12,285,149
-2,222   3,333   10      223,760,269     22,376,026
-3,333   4,444   10      320,136,538     32,013,653
-4,444   1,111   9       379,962,492     42,218,054
+1,111   2,222   10      112,851,496     11,285,149
+2,222   3,333   10      213,760,269     21,376,026
+3,333   4,444   10      310,136,538     31,013,653
+4,444   1,111   9       370,962,486     41,218,054
 ```
 
 # Author
