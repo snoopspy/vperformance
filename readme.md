@@ -3,7 +3,7 @@ VDream Performance Measurement Library
 
 # About
   * VPerformance is a template based time measurement library for C++.
-  * It used c++11 chrono module or QElapsedTimer class of Qt.
+  * It uses c++11 chrono module or QElapsedTimer class of Qt.
 
 # Install
   * VPerformance consists of only header file that means it requires no compilation.
@@ -42,6 +42,7 @@ int main()
   * Add **VPerformanceChrono** header file and declare object of the class.
 ```
 #include <VPerformanceChrono> /**/
+...
 int main()
 {
   VPerformanceChrono pfm; /**/
