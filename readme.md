@@ -9,20 +9,20 @@ VDream Performance Measurement Library
   * VPerformance consists of only header file that means it requires no compilation.
     * For Qt user
       * Include **vperformance.pri**
-    * For Non Qt user
-      * Just include header file in src folder.
+    * For None Qt user
+      * Just include and use header files in src folder.
 
 # Examples
   * There exists the following code.
   * Suppose that it contains a critical routine that consumes too much time. You don't know which function is time comsuming, Anyway, you would like to figure out how long it takes time in in each routine. VPerformance is a good solution for this problem.
-```
+```cpp
   doSometing1();
   doSometing2();
   doSometing3();
   doSometing4();
 ```
   * Original code.
-```
+```cpp
 void doSomething(int msec)
 {
   std::this_thread::sleep_for(std::chrono::milliseconds(msec));
@@ -40,7 +40,7 @@ int main()
 }
 ```
   * Add **VPerformanceChrono** header file and declare object of the class.
-```
+```cpp
 #include <VPerformanceChrono> /**/
 ...
 int main()
@@ -57,7 +57,7 @@ int main()
 ```
   * Call **check** function everywhere you would like to check time consuming job. You could use ```__LINE__``` macro for the parameter.
   * At the end, call **report** function to see the result.
-```
+``` cpp
 int main()
 {
   VPerformanceChrono pfm;
@@ -75,7 +75,7 @@ int main()
   pfm.report(); /**/
 }
 ```
-  * The result. You get count, elapsed time and average time information(nano-second) where check function is called.
+  * The result. You get count, elapsed and average time information(nano-second) where check function is called.
 ```
 beg     end     count   elapsed         average
 1,111   2,222   10      112,851,496     11,285,149
