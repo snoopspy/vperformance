@@ -56,7 +56,7 @@ int main()
   VPerformanceChrono pfm; // Declare object of the class
   for (int i = 0; i < 10; i++)
   {
-    pfm.check(1111); // Call check function everywhere you would like to check time consuming job
+    pfm.check(1111); // Call check everywhere you would like to check time consuming
     doSomething(10);
     pfm.check(2222);
     doSomething(20);
