@@ -12,13 +12,13 @@ int main()
   VPerformanceChrono pfm;
   for (int i = 0; i < 10; i++)
   {
-    pfm.check(1111); /**/
+    pfm.check(__LINE__);
     doSomething(10);
-    pfm.check(2222); /**/
+    pfm.check(__LINE__);
     doSomething(20);
-    pfm.check(3333); /**/
+    pfm.check(__LINE__);
     doSomething(30);
-    pfm.check(4444); /**/
+    pfm.check(__LINE__);
     doSomething(40);
   }
   pfm.report();
