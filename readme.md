@@ -41,7 +41,7 @@ int main()
 }
 ```
 
-* Here is a code that uses **VPerformance** module.
+* Let me add a code using **VPerformance** module.
 
 ```cpp
 #include <VPerformanceChrono> // Add header file
