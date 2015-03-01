@@ -83,6 +83,7 @@ beg     end     count   elapsed         average
 3,333   4,444   10      310,136,538     31,013,653
 4,444   1,111   9       370,962,486     41,218,054
 ```
+  * For more example, see [exam](app/exam/) and [test](app/test/) codes.
 
 # Author
 * [Gilbert Lee](http://www.gilgil.net)
