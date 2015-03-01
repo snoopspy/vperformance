@@ -64,7 +64,6 @@ class VPerformance
   };
 
   typedef std::map<Key, Data> ReportMap;
-  //typedef std::unordered_map<ReportKey, ReportData, ReportKey::Hash> ReportMap; // gilgil temp 2015.02.22
 
 public:
   TIMER timer;
