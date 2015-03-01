@@ -14,7 +14,7 @@ VDream Performance Measurement Library
 
 # Examples
   * There exists the following code.
-  * Suppose that it contains a critical routine that consumes too much time. You don't know which function is time comsuming, and you would like to figure out how long it takes time in in each routine. VPerformance is a good solution for this problem.
+  * Suppose that it contains a critical routine that consumes too much time. You don't know which function is time comsuming, Anyway, you would like to figure out how long it takes time in in each routine. VPerformance is a good solution for this problem.
 ```
   doSometing1();
   doSometing2();
@@ -56,7 +56,7 @@ int main()
 }
 ```
   * Call **check** function everywhere you would like to check time consuming job. You could use ```__LINE__``` macro for the parameter.
-  * At the end, call **report** function to write the result.
+  * At the end, call **report** function to see the result.
 ```
 int main()
 {
@@ -75,7 +75,7 @@ int main()
   pfm.report(); /**/
 }
 ```
-  * The result. You get count, elapsed time and average time information everywhere check function is called.
+  * The result. You get count, elapsed time and average time information(nano-second) where check function is called.
 ```
 beg     end     count   elapsed         average
 1,111   2,222   10      112,851,496     11,285,149
