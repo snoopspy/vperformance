@@ -12,7 +12,7 @@ VDream Performance Measurement Library
       * Just include and use header files in src folder.
 
 # Examples
-* See the following code. Suppose that it contains a critical routine that consumes too much time. You don't know which function is time comsuming, Anyway, you would like to figure out how long it takes time in in each routine. VPerformance is a good solution for this problem.
+* See the following code. Suppose that it contains a critical routine that consumes too much time. You don't know which function is time comsuming. Anyway, you would like to figure out how long it takes time in in each routine. VPerformance is a good solution for this problem.
 
 ```cpp
   doSometing1();
