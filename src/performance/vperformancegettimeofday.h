@@ -52,12 +52,4 @@ typedef VPerformance<
   VPerformanceGetTimeOfDay_::Timer // TIMER
 > VPerformanceGetTimeOfDay;
 
-/*
-std::ostream& operator << (std::ostream& os, std::chrono::high_resolution_clock::duration& rhs)
-{
-  os << rhs.count();
-  return os;
-}
-*/
-
 #endif // __V_PERFORMANCE_GET_TIME_OF_DAY_H__
