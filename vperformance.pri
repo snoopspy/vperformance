@@ -13,4 +13,5 @@ HEADERS += \
 	$${PWD}/src/performance/vperformance.h \
 	$${PWD}/src/performance/vperformancechrono.h \
 	$${PWD}/src/performance/vperformanceelapsedtimer.h \
+	$${PWD}/src/performance/vperformancegettimeofday.h \
 	$${PWD}/src/performance/vperformancenull.h
