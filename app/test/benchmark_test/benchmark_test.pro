@@ -1,7 +1,7 @@
 QT += core
 QT -= gui
 
-TARGET = benchmark
+TARGET = benchmark_test
 CONFIG += console
 CONFIG -= app_bundle
 TEMPLATE = app
