@@ -72,11 +72,11 @@ int main()
 * The result. You get count, elapsed and average time information(nano-second) where check function is called.
   
 ```
-beg     end     count   elapsed         average
-1,111   2,222   10      112,851,496     11,285,149
-2,222   3,333   10      213,760,269     21,376,026
-3,333   4,444   10      310,136,538     31,013,653
-4,444   1,111   9       370,962,486     41,218,054
+beg     end     count   elapsed      average
+1111    2222    10      101,155,750  10,115,575
+2222    3333    10      201,018,290  20,101,829
+3333    4444    10      301,024,734  30,102,473
+4444    1111    9       360,927,856  40,103,095
 ```
 
 * For more information, see [exam](app/exam/) and [test](app/test/) codes.
