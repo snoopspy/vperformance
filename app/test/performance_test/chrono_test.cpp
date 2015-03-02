@@ -1,7 +1,7 @@
-#include <VPerformanceGetTimeOfDay>
+#include <VPerformanceChrono>
 #include "mytest.h"
 
 TEST(Chrono, test)
 {
-  MyTest<VPerformanceGetTimeOfDay>();
+  MyTest<VPerformanceChrono>();
 }

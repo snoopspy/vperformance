@@ -13,38 +13,39 @@
 
 #include "vperformance.h"
 
-namespace Null
+// ----------------------------------------------------------------------------
+// VPerformanceNull_
+// ----------------------------------------------------------------------------
+namespace VPerformanceNull_
 {
-  typedef int MyInt;
-
-  typedef MyInt Milestone;
-
-  struct Clock
-  {
-    MyInt _c;
-
-    Clock operator - (const Clock &rhs) const { Clock res; res._c = _c - rhs._c; return res; }
-  };
+  typedef int Milestone;
 
   struct Diff
   {
-    MyInt _d;
+    int d_;
 
-    Diff operator += (const Clock &rhs)   { _d += rhs._c; return *this;              }
-    Diff operator / (const int rhs) const { Diff res; res._d = _d / rhs; return res; }
+    Diff operator += (const Diff &rhs) { d_ += rhs.d_; return *this; }
+    Diff operator / (const int count) const { Diff res; res.d_ = d_ / count; return res; }
+  };
+
+  struct Clock
+  {
+    int c_;
+
+    Diff operator - (const Clock &rhs) const { Diff res; res.d_ = c_ - rhs.c_; return res; }
   };
 
   struct Timer
   {
-    MyInt _t;
+    int t_;
 
-    Clock now() { Clock res; res._c = _t++; return res; }
+    Clock now() { Clock res; res.c_ = t_++; return res; }
   };
 };
 
-std::ostream& operator << (std::ostream& os, Null::Diff& rhs)
+std::ostream& operator << (std::ostream& os, VPerformanceNull_::Diff& rhs)
 {
-  os << rhs._d;
+  os << rhs.d_;
   return os;
 }
 
@@ -52,10 +53,10 @@ std::ostream& operator << (std::ostream& os, Null::Diff& rhs)
 // VPerformanceNull
 // ----------------------------------------------------------------------------
 typedef VPerformance<
-  Null::Milestone, // MILESTONE
-  Null::Clock, // CLOCK
-  Null::Diff, // DIFF
-  Null::Timer // TIMER
+  VPerformanceNull_::Milestone, // MILESTONE
+  VPerformanceNull_::Clock, // CLOCK
+  VPerformanceNull_::Diff, // DIFF
+  VPerformanceNull_::Timer // TIMER
 > VPerformanceNull;
 
 #endif // __V_PERFORMANCE_NULL_H__

@@ -15,19 +15,49 @@
 #include "vperformance.h"
 
 // ----------------------------------------------------------------------------
+// VPerformanceGetTimeOfDay_
+// ----------------------------------------------------------------------------
+namespace VPerformanceGetTimeOfDay_
+{
+  typedef __suseconds_t Diff;
+
+  struct Clock
+  {
+    struct timeval tv_;
+
+    Diff operator - (const Clock &rhs) const
+    {
+      return (tv_.tv_sec - rhs.tv_.tv_sec) * 1000000 + (tv_.tv_usec - rhs.tv_.tv_usec);
+    }
+  };
+
+  struct Timer
+  {
+    Clock now()
+    {
+      Clock res;
+      gettimeofday(&res.tv_, NULL);
+      return res;
+    }
+  };
+};
+
+// ----------------------------------------------------------------------------
 // VPerformanceGetTimeOfDay
 // ----------------------------------------------------------------------------
 typedef VPerformance<
   int, // MILESTONE
-  std::chrono::high_resolution_clock::time_point, // CLOCK
-  std::chrono::high_resolution_clock::duration, // DIFF
-  std::chrono::high_resolution_clock // TIMER
-> VPerformanceChrono;
+  VPerformanceGetTimeOfDay_::Clock, // CLOCK
+  VPerformanceGetTimeOfDay_::Diff, // DIFF
+  VPerformanceGetTimeOfDay_::Timer // TIMER
+> VPerformanceGetTimeOfDay;
 
+/*
 std::ostream& operator << (std::ostream& os, std::chrono::high_resolution_clock::duration& rhs)
 {
   os << rhs.count();
   return os;
 }
+*/
 
 #endif // __V_PERFORMANCE_GET_TIME_OF_DAY_H__

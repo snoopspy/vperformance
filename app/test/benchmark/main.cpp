@@ -70,7 +70,7 @@ void test_gettimeofday_usec()
 {
   struct timeval beg; gettimeofday(&beg, NULL);
   struct timeval end;
-  long diff;
+  __suseconds_t diff;
   for (int i = 0; i < LOOP_CNT; i++)
   {
     gettimeofday(&end, NULL);
