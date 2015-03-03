@@ -53,10 +53,10 @@ std::ostream& operator << (std::ostream& os, VPerformanceNull_::Diff& rhs)
 // VPerformanceNull
 // ----------------------------------------------------------------------------
 typedef VPerformance<
-  VPerformanceNull_::Milestone, // MILESTONE
-  VPerformanceNull_::Clock, // CLOCK
-  VPerformanceNull_::Diff, // DIFF
-  VPerformanceNull_::Timer // TIMER
+  VPerformanceNull_::Milestone,
+  VPerformanceNull_::Clock,
+  VPerformanceNull_::Diff,
+  VPerformanceNull_::Timer
 > VPerformanceNull;
 
 #endif // __V_PERFORMANCE_NULL_H__

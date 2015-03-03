@@ -19,6 +19,8 @@
 // ----------------------------------------------------------------------------
 namespace VPerformanceGetTimeOfDay_
 {
+  typedef int Milestone;
+
   typedef long /*__suseconds_t*/ Diff;
 
   struct Clock
@@ -46,10 +48,10 @@ namespace VPerformanceGetTimeOfDay_
 // VPerformanceGetTimeOfDay
 // ----------------------------------------------------------------------------
 typedef VPerformance<
-  int, // MILESTONE
-  VPerformanceGetTimeOfDay_::Clock, // CLOCK
-  VPerformanceGetTimeOfDay_::Diff, // DIFF
-  VPerformanceGetTimeOfDay_::Timer // TIMER
+  VPerformanceGetTimeOfDay_::Milestone,
+  VPerformanceGetTimeOfDay_::Clock,
+  VPerformanceGetTimeOfDay_::Diff,
+  VPerformanceGetTimeOfDay_::Timer
 > VPerformanceGetTimeOfDay;
 
 #endif // __V_PERFORMANCE_GET_TIME_OF_DAY_H__

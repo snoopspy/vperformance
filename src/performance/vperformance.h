@@ -105,7 +105,7 @@ public:
 
     Data &data = reportMap[key];
     data.count++;
-    data.totalElapsed += now - lastClock;
+    data.totalElapsed += DIFF(now - lastClock);
 
     lastMilestone = milestone;
     lastClock = now;

@@ -16,13 +16,27 @@
 #include "vperformance.h"
 
 // ----------------------------------------------------------------------------
+// VPerformanceChrono_
+// ----------------------------------------------------------------------------
+namespace VPerformanceChrono_
+{
+  typedef int Milestone;
+
+  typedef std::chrono::high_resolution_clock::time_point Clock;
+
+  typedef std::chrono::high_resolution_clock::duration Diff;
+
+  typedef std::chrono::high_resolution_clock Timer;
+};
+
+// ----------------------------------------------------------------------------
 // VPerformanceChrono
 // ----------------------------------------------------------------------------
 typedef VPerformance<
-  int, // MILESTONE
-  std::chrono::high_resolution_clock::time_point, // CLOCK
-  std::chrono::high_resolution_clock::duration, // DIFF
-  std::chrono::high_resolution_clock // TIMER
+  VPerformanceChrono_::Milestone,
+  VPerformanceChrono_::Clock,
+  VPerformanceChrono_::Diff,
+  VPerformanceChrono_::Timer
 > VPerformanceChrono;
 
 std::ostream& operator << (std::ostream& os, std::chrono::high_resolution_clock::duration& rhs)
