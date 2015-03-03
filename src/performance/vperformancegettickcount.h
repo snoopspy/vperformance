@@ -8,39 +8,41 @@
 //
 // ----------------------------------------------------------------------------
 
-#ifndef __V_PERFORMANCE_ELAPSEDTIMER_H__
-#define __V_PERFORMANCE_ELAPSEDTIMER_H__
+#ifndef __V_PERFORMANCE_GET_TICK_COUNT_H__
+#define __V_PERFORMANCE_GET_TICK_COUNT_H__
 
-#include <QElapsedTimer>
+#if defined(WIN32) || defined(_WIN32)
+
+#include <windows.h>
 #include "vperformance.h"
 
 // ----------------------------------------------------------------------------
-// VPerformanceElapsedTimer_
+// VPerformanceGetTickCount_
 // ----------------------------------------------------------------------------
-namespace VPerformanceElapsedTimer_
+namespace VPerformanceGetTickCount_
 {
   typedef int Milestone;
 
-  typedef qint64 Clock;
+  typedef DWORD Clock;
 
-  typedef qint64 Diff;
+  typedef DWORD Diff;
 
   struct Timer
   {
-    QElapsedTimer elapsedTimer;
-    Timer() { elapsedTimer.start(); }
-    Clock now() { return elapsedTimer.nsecsElapsed(); }
+    Clock now() { return GetTickCount(); }
   };
 }
 
 // ----------------------------------------------------------------------------
-// VPerformanceElapsedTimer
+// VPerformanceGetTickCount
 // ----------------------------------------------------------------------------
 typedef VPerformance<
-  VPerformanceElapsedTimer_::Milestone,
-  VPerformanceElapsedTimer_::Clock,
-  VPerformanceElapsedTimer_::Diff,
-  VPerformanceElapsedTimer_::Timer
-> VPerformanceElapsedTimer;
+  VPerformanceGetTickCount_::Milestone,
+  VPerformanceGetTickCount_::Clock,
+  VPerformanceGetTickCount_::Diff,
+  VPerformanceGetTickCount_::Timer
+> VPerformanceGetTickCount;
 
-#endif // __V_PERFORMANCE_ELAPSEDTIMER_H__
+#endif // WIN32
+
+#endif // __V_PERFORMANCE_GET_TICK_COUNT_H__

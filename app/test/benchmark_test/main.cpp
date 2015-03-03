@@ -2,7 +2,7 @@
 
 static const int LOOP_CNT = 1000000;
 
-#ifdef WIN32
+#if defined(WIN32) || defined(_WIN32)
 
 #include <windows.h>
 void test_gettickcount_msec()
@@ -70,7 +70,7 @@ void test_gettimeofday_usec()
 {
   struct timeval beg; gettimeofday(&beg, NULL);
   struct timeval end;
-  __suseconds_t diff;
+  long diff;
   for (int i = 0; i < LOOP_CNT; i++)
   {
     gettimeofday(&end, NULL);
