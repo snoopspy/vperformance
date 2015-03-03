@@ -19,7 +19,7 @@
 // ----------------------------------------------------------------------------
 namespace VPerformanceGetTimeOfDay_
 {
-  typedef __suseconds_t Diff;
+  typedef long /*__suseconds_t*/ Diff;
 
   struct Clock
   {
