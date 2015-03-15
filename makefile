@@ -1,5 +1,6 @@
-all:
-	make app_
+first: all
+
+all: app_
 
 update:
 	git pull
