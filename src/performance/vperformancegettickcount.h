@@ -11,7 +11,7 @@
 #ifndef __V_PERFORMANCE_GET_TICK_COUNT_H__
 #define __V_PERFORMANCE_GET_TICK_COUNT_H__
 
-#if defined(WIN32) || defined(_WIN32)
+#ifdef _WIN32
 
 #include <windows.h>
 #include "vperformance.h"
@@ -43,6 +43,6 @@ typedef VPerformance<
   VPerformanceGetTickCount_::Timer
 > VPerformanceGetTickCount;
 
-#endif // WIN32
+#endif // _WIN32
 
 #endif // __V_PERFORMANCE_GET_TICK_COUNT_H__
