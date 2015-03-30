@@ -1,11 +1,11 @@
-first: all
+.PHONY: all update app clean
 
-all: app_
+all: app
 
 update:
 	git pull
 
-app_:
+app:
 	cd app && qmake && make && make clean && cd ..
 
 clean:
