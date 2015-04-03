@@ -11,8 +11,8 @@ win32:LIBS += -lwinmm
 #-------------------------------------------------
 # vperformance
 #-------------------------------------------------
-VPERFORMANCE_PATH = $${PWD}
-INCLUDEPATH += $${VPERFORMANCE_PATH}/src
+VPERFORMANCE_DIR = $${PWD}
+INCLUDEPATH += $${VPERFORMANCE_DIR}/src
 
 HEADERS += \
 	$${PWD}/src/performance/vperformance.h \
